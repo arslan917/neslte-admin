@@ -12,25 +12,6 @@ import { IconPlus } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const events:any = [
-    {
-        title: 'nestle 2025',
-        id: 'nestle2025'
-    },
-    {
-        title: 'nestle 2024',
-        id: 'nestle2024'
-    },
-    {
-        title: 'nestle 2023',
-        id: 'nestle2023'
-    },
-    {
-        title: 'nestle 2022',
-        id: 'nestle2022'
-    }
-];
-
 const colors = [
   '#FA812F',
   '#FB9E3A',
@@ -39,98 +20,11 @@ const colors = [
   '#521C0D'
 ]
 
-const polls:any = {
-    event: 'nestle',
-    nestle2025: [
-        {
-            question: "What feature would you like next?",
-            options: [
-                { id: "opt1", text: "Dark Mode", label: "opt1" },
-                { id: "opt2", text: "Mobile App", label: "opt2" },
-                { id: "opt3", text: "Light Mode", label: "opt3" },
-                { id: "opt4", text: "Web App", label: "opt4" },
-            ],
-            data: [
-                { id: "opt1", votes: 275, label: "Dark Mode" },
-                { id: "opt2", votes: 300, label: "Mobile App" },
-                { id: "opt3", votes: 230, label: "Light Mode" },
-                { id: "opt4", votes: 150, label: "Web App" },
-            ],
-            allowMultipleVotes: false,
-            allowCustomOption: false,
-            expiresAt: "2025-07-01T00:00:00Z",
-            eventId: 'nestle2025',
-            isActive: false
-        },
-        {
-            question: "What feature would you like next?",
-            options: [
-                { id: "opt1", text: "Dark Mode", label: "opt1", color: 'var(--primary)' },
-                { id: "opt2", text: "Mobile App", label: "opt2", color: 'var(--primary)' },
-                { id: "opt3", text: "Light Mode", label: "opt3", color: 'var(--primary)' },
-                { id: "opt4", text: "Web App", label: "opt4", color: 'var(--primary)' },
-            ],
-            data: [
-                { id: "opt1", votes: 275, label: "Dark Mode", color: 'var(--primary)' },
-                { id: "opt2", votes: 300, label: "Mobile App", color: 'var(--primary-light)' },
-                { id: "opt3", votes: 230, label: "Light Mode", color: 'var(--primary-lighter)' },
-                { id: "opt4", votes: 150, label: "Web App", color: 'var(--primary-dark)' },
-            ],
-            allowMultipleVotes: false,
-            allowCustomOption: false,
-            expiresAt: "2025-07-01T00:00:00Z",
-            eventId: 'nestle2026',
-            isActive: false
-        },
-        {
-            question: "What feature would you like next?",
-            options: [
-                { id: "opt1", text: "Dark Mode", label: "opt1", color: 'var(--primary)' },
-                { id: "opt2", text: "Mobile App", label: "opt2", color: 'var(--primary)' },
-                { id: "opt3", text: "Light Mode", label: "opt3", color: 'var(--primary)' },
-                { id: "opt4", text: "Web App", label: "opt4", color: 'var(--primary)' },
-            ],
-            data: [
-                { id: "opt1", votes: 275, label: "Dark Mode", color: 'var(--primary)' },
-                { id: "opt2", votes: 300, label: "Mobile App", color: 'var(--primary-light)' },
-                { id: "opt3", votes: 230, label: "Light Mode", color: 'var(--primary-lighter)' },
-                { id: "opt4", votes: 150, label: "Web App", color: 'var(--primary-dark)' },
-            ],
-            allowMultipleVotes: false,
-            allowCustomOption: false,
-            expiresAt: "2025-07-01T00:00:00Z",
-            eventId: 'nestle2026',
-            isActive: false
-        },
-        {
-            question: "What feature would you like next?",
-            options: [
-                { id: "opt1", text: "Dark Mode", label: "opt1", color: 'var(--primary)' },
-                { id: "opt2", text: "Mobile App", label: "opt2", color: 'var(--primary)' },
-                { id: "opt3", text: "Light Mode", label: "opt3", color: 'var(--primary)' },
-                { id: "opt4", text: "Web App", label: "opt4", color: 'var(--primary)' },
-            ],
-            data: [
-                { id: "opt1", votes: 275, label: "Dark Mode", color: 'var(--primary)' },
-                { id: "opt2", votes: 300, label: "Mobile App", color: 'var(--primary-light)' },
-                { id: "opt3", votes: 230, label: "Light Mode", color: 'var(--primary-lighter)' },
-                { id: "opt4", votes: 150, label: "Web App", color: 'var(--primary-dark)' },
-            ],
-            allowMultipleVotes: false,
-            allowCustomOption: false,
-            expiresAt: "2025-07-01T00:00:00Z",
-            eventId: 'nestle2026',
-            isActive: false
-        }
-    ]
-}
-
 export default function Page() {
 
   const [event , setEvent] = useState<any>()  
   const [openCard, setOpenCard] = useState<string | number | null>(null);
   const [polls , setPolls] = useState<any>([])  
-  const [reults , setResults] = useState<any>([])  
 
   const toggleCard = (key: string | number, id: string | number, ind: number) => {
     setOpenCard(prev => (prev === key ? null : key));
@@ -172,7 +66,6 @@ export default function Page() {
     try {
       const res = await fetch(`http://localhost:5000/api/polls/get-results?eventId=${event}&id=${id}`);
       const data = await res.json();
-      setResults(data)
       polls[0].polls[ind].results = data
       console.log(polls)
       setPolls(polls)

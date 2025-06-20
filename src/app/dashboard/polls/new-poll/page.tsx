@@ -22,15 +22,14 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Product } from '@/constants/mock-api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-export default function page() {
+export default function Page() {
     let router = useRouter();
 
     const [event , setEvent] = useState<any>()  
@@ -43,7 +42,6 @@ export default function page() {
         try {
             const res = await fetch("http://localhost:5000/api/events/search?event=nestle");
             const data = await res.json();
-            console.log(data)
             setEvents(data);
             setEvent(data[0].name)
         } catch (error) {
@@ -57,7 +55,6 @@ export default function page() {
         try {
             const res = await fetch("http://localhost:5000/api/polls/search?eventId="+event);
             const data = await res.json();
-            console.log(data[0].polls)
             setPolls(data[0].polls);
         } catch (error) {
         console.log("Error fetching events:", error);
@@ -86,8 +83,6 @@ export default function page() {
             polls: [pollsData]
         };
     }
-
-    console.log(defaultValues)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -166,7 +161,6 @@ export default function page() {
             eventId: event,
             polls: values.polls
         }
-        console.log(pollsData)
         if(polls?.length){
             updatePoll(pollsData);
         }else{

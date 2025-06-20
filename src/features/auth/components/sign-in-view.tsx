@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { redirect, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export const metadata: Metadata = {
   title: 'Authentication',

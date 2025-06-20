@@ -1,19 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { IconTrendingUp } from '@tabler/icons-react';
 import { Label, Pie, PieChart } from 'recharts';
 
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle
 } from '@/components/ui/card';
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent
@@ -38,18 +33,6 @@ export function PieGraph( config:any ) {
   return (
     <Card className='@container/card w-full'>
       <CardHeader>
-        {/* <CardTitle>Q: {config.question}</CardTitle>
-        <CardDescription>
-          <div className='line-clamp-1 flex gap-2 font-medium'>
-              Options
-          </div>
-          {config.options.map((option:any, index:any) => {
-              return (<div key={index} className='text-muted-foreground'>
-              {index+1}: {option.text}
-              </div>)
-          })}
-          <span className='@[540px]/card:hidden'>Browser distribution</span>
-        </CardDescription> */}
       </CardHeader>
       <CardContent className='px-2 pt-4 sm:px-6 sm:pt-6'>
         <ChartContainer
@@ -130,16 +113,6 @@ export function PieGraph( config:any ) {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      {/* <CardFooter className='flex-col gap-2 text-sm'>
-        <div className='flex items-center gap-2 leading-none font-medium'>
-          Chrome leads with{' '}
-          {((chartData[0].visitors / totalVisitors) * 100).toFixed(1)}%{' '}
-          <IconTrendingUp className='h-4 w-4' />
-        </div>
-        <div className='text-muted-foreground leading-none'>
-          Based on data from January - June 2024
-        </div>
-      </CardFooter> */}
     </Card>
   );
 }

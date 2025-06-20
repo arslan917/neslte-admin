@@ -16,9 +16,7 @@ import React, { useEffect, useState } from 'react';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Heading } from '@/components/ui/heading';
-import { IconAlertSquare, IconDatabaseOff, IconInfoOctagon, IconLoader2, IconMoodEmpty, IconPlus, IconTemplateOff } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
-import { Section } from 'lucide-react';
+import { IconDatabaseOff, IconLoader2, IconPlus } from '@tabler/icons-react';
 
 export default function Page() {
   const [events, setEvents] = useState([]);
@@ -49,7 +47,6 @@ export default function Page() {
         }),
       });
       const data = await res.json();
-      console.log(data)
     } catch (error) {
       console.log("Error fetching events:", error);
     } finally {

@@ -1,25 +1,13 @@
 'use client';
 import PageContainer from '@/components/layout/page-container';
-import { Button, buttonVariants } from '@/components/ui/button';
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heading } from '@/components/ui/heading';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
-import { PieGraph } from '@/features/overview/components/pie-graph';
-import { cn } from '@/lib/utils';
-import { IconPlus } from '@tabler/icons-react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
-const colors = [
-  '#FA812F',
-  '#FB9E3A',
-  '#E6521F',
-  '#EA2F14',
-  '#521C0D'
-]
 
 export default function Page() {
 
@@ -56,7 +44,6 @@ export default function Page() {
         try {
             const res = await fetch("http://localhost:5000/api/events/search?eventId="+event);
             const data = await res.json();
-            console.log(event, 'event')
             setSchedule(data[0])
         } catch (error) {
             console.log("Error fetching events:", error);

@@ -22,16 +22,15 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { Product } from '@/constants/mock-api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { IconLoader2, IconPlus, IconRowRemove, IconTrash } from '@tabler/icons-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFieldArray, useForm, useFormContext } from 'react-hook-form';
 import * as z from 'zod';
 import { Toaster } from '@/components/ui/sonner';
 
-export default function page() {
+export default function Page() {
     let router = useRouter();
 
     const searchParams = useSearchParams()
@@ -44,7 +43,6 @@ export default function page() {
         try {
             const res = await fetch("http://localhost:5000/api/events/search?eventId="+type);
             const data = await res.json();
-            console.log(data[0])
             setEvents(data[0]);
         } catch (error) {
             console.log("Error fetching events:", error);
@@ -117,7 +115,6 @@ export default function page() {
             const data = await res.json();
 
             if (res.status === 200) {
-                console.log("Success:", data);
                 router.back();
             } else {
                 console.error("Server Error:", data);
@@ -143,7 +140,6 @@ export default function page() {
             const data = await res.json();
 
             if (res.status === 200) {
-                console.log("Success:", data);
                 router.back();
             } else {
                 console.error("Server Error:", data);

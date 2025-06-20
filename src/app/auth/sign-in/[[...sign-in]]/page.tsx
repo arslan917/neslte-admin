@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import SignInViewPage from '@/features/auth/components/sign-in-view';
-import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: 'Authentication | Sign In',
