@@ -28,7 +28,7 @@ export default function Page() {
     
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/events/search?event=nestle");
+        const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?event=nestle");
         const data = await res.json();
         setEvents(data);
         setEvent(data[0].name)
@@ -42,7 +42,7 @@ export default function Page() {
 
     const fetchQuestions = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/events/search?eventId="+event);
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?eventId="+event);
             const data = await res.json();
             setSchedule(data[0])
         } catch (error) {
@@ -68,7 +68,7 @@ export default function Page() {
     const handleSend = async () => {
         if (answer.newAnswer.trim()) {
             try {
-                const res = await fetch(`http://localhost:5000/api/events/update-answer`, {
+                const res = await fetch(`https://unetech-apis-production.up.railway.app/api/events/update-answer`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(answer),

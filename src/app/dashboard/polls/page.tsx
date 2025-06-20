@@ -37,7 +37,7 @@ export default function Page() {
   const [resultsLoading, setResultsLoading] = useState(true);
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/events/search?event=nestle");
+      const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?event=nestle");
       const data = await res.json();
       setEvents(data);
       setEvent(data[0].name)
@@ -50,7 +50,7 @@ export default function Page() {
 
   const fetchPolls = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/polls/search?eventId="+event);
+      const res = await fetch("https://unetech-apis-production.up.railway.app/api/polls/search?eventId="+event);
       const data = await res.json();
       setPolls(data)
       console.log(data)
@@ -64,7 +64,7 @@ export default function Page() {
   const fetchResults = async (id: any, ind: number) => {
     setResultsLoading(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/polls/get-results?eventId=${event}&id=${id}`);
+      const res = await fetch(`https://unetech-apis-production.up.railway.app/api/polls/get-results?eventId=${event}&id=${id}`);
       const data = await res.json();
       polls[0].polls[ind].results = data
       console.log(polls)

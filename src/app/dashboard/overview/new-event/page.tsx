@@ -41,7 +41,7 @@ export default function Page() {
 
     const fetchEvents = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/events/search?eventId="+type);
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?eventId="+type);
             const data = await res.json();
             setEvents(data[0]);
         } catch (error) {
@@ -104,7 +104,7 @@ export default function Page() {
         try {
             setCreating(true);
 
-            const res = await fetch("http://localhost:5000/api/events/create", {
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/create", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(values),
@@ -131,7 +131,7 @@ export default function Page() {
     async function updateEvent(values: z.infer<typeof formSchema>) {
         console.log(values)
         try {
-            const res = await fetch(`http://localhost:5000/api/events/update?eventId=${values.eventId}`, {
+            const res = await fetch(`https://unetech-apis-production.up.railway.app/api/events/update?eventId=${values.eventId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values),

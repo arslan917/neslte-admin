@@ -40,7 +40,7 @@ export default function Page() {
     
     const fetchEvents = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/events/search?event=nestle");
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?event=nestle");
             const data = await res.json();
             setEvents(data);
             setEvent(data[0].name)
@@ -53,7 +53,7 @@ export default function Page() {
 
     const fetchPolls = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/polls/search?eventId="+event);
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/polls/search?eventId="+event);
             const data = await res.json();
             setPolls(data[0].polls);
         } catch (error) {
@@ -104,7 +104,7 @@ export default function Page() {
         try {
             setCreating(true);
 
-            const res = await fetch("http://localhost:5000/api/polls/create", {
+            const res = await fetch("https://unetech-apis-production.up.railway.app/api/polls/create", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(values),
@@ -132,7 +132,7 @@ export default function Page() {
     async function updatePoll(values: any) {
         console.log(values)
         try {
-            const res = await fetch(`http://localhost:5000/api/polls/update?eventId=${values.eventId}`, {
+            const res = await fetch(`https://unetech-apis-production.up.railway.app/api/polls/update?eventId=${values.eventId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values),

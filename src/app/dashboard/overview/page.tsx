@@ -24,7 +24,7 @@ export default function Page() {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/events/search?event=nestle");
+      const res = await fetch("https://unetech-apis-production.up.railway.app/api/events/search?event=nestle");
       const data = await res.json();
       setEvents(data);
     } catch (error) {
@@ -36,7 +36,7 @@ export default function Page() {
 
   const createAdmin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin_users/create", {
+      const res = await fetch("https://unetech-apis-production.up.railway.app/api/admin_users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
