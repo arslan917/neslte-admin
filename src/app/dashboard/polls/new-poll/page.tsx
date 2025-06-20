@@ -225,7 +225,7 @@ export default function Page() {
 }
 
 
-export function PollItem({ index, onRemove, disableRemove, control }: PollItemProps) {
+function PollItem({ index, onRemove, disableRemove, control }: PollItemProps) {
   const {
     fields: optionFields,
     append,
